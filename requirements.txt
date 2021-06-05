@@ -1,0 +1,10 @@
+Flask
+numpy
+pandas
+PyYAML
+mysql-connector
+Flask-SQLAlchemy
+mysql-connector-python
+mysqlclient
+Flask-JWT-Extended
+APScheduler
