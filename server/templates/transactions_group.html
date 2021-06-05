@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+  {{ navbar | safe }}
+  <title>Group Transaction History</title>
+  <div>
+    <center>
+      <div>
+        <br>
+        <h1>Group Transactions</h1>
+        <br>
+        <div>
+          <table border = '3' style="width:60%">
+            <tr>
+              <th>Stock ID</th>
+              <th>Stock Name</th>
+              <th>Transaction Type</th>
+              <th># of Stocks</th>
+              <th>Price</th>
+              <th>Total Money Spent</th>
+              <th>Date</th>
+            </tr>
+            {% for stock_id, stock_name, transaction_type, amount, price, total_cost, date in data %}
+            <tr>
+              <th>{{stock_id}}</th>
+              <th>{{stock_name}}</th>
+              <th>{{transaction_type}}</th>
+              <th>{{amount}}</th>
+              <th>{{price}}</th>
+              <th>{{total_cost}}</th>
+              <th>{{date}}</th>
+            </tr>
+            {% endfor %}
+          </table>
+        </div>
+    </div>
+    </center>
+  </div>
+</body>

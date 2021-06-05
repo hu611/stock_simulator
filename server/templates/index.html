@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+  {{ navbar | safe }}
+
+  <br>
+  <center><h2>Stock Info</h2></center>
+
+  <center>
+    <i>Stocks In Market:</i> {{ num_stocks }}
+    <span style="padding: 5px"></span>
+    <i>Shares Available:</i> {{ num_shares }}
+  </center>
+
+  <hr style="width:95%;">
+  <center>
+    <h2>Market Info</h2>
+  </center>
+
+  <center>
+    <i>Transactions: </i> {{ transaction_cnt }}
+    <span style="padding: 5px"></span>
+    <i>Average Buy Price:</i> ${{ avg_buy_price }}
+    <span style="padding: 5px"></span>
+    <i>Average Sell Price:</i> ${{ avg_sell_price }}
+    <p style="margin-top: 10px; font-size: 11px"><i>All data is for the past 24 hours</i></p>
+  </center>
+
+  <hr style="width:95%;">
+  <center><h2>Top Stocks</h2></center>
+
+  <div id="Stock1"></div>
+  <br>
+  <div id="Stock2"></div>
+  <hr style="width:95%;">
+
+  <script>
+    var layout1 = {
+      title: '{{ stock_name_1 }}',
+      xaxis: {
+        title: 'time (min)'
+      },
+      yaxis: {
+        title: 'price (usd)'
+      }
+    };
+
+    var stockGraph1 = {
+      x: new Array(),
+      y: {{ price_arr_1 }},
+      type: 'scatter'
+    };
+
+    for (var i = stockGraph1.y.length; i >= 0; i--) {
+      stockGraph1.x.push("-" + i);
+    }
+
+    var data = [stockGraph1];
+
+    Plotly.newPlot('Stock1', data, layout1);
+
+    var layout2 = {
+      title: '{{ stock_name_2 }}',
+      xaxis: {
+        title: 'time (min)'
+      },
+      yaxis: {
+        title: 'price (usd)'
+      }
+    };
+
+    var stockGraph2 = {
+      x: new Array(),
+      y: {{ price_arr_2 }},
+      type: 'scatter'
+    };
+
+    for (var i = stockGraph2.y.length; i >= 0; i--) {
+      stockGraph2.x.push("-" + i);
+    }
+
+    var data = [stockGraph2];
+
+    Plotly.newPlot('Stock2', data, layout2);
+  </script>
+</body>
+</html>

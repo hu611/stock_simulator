@@ -1,0 +1,44 @@
+<html>
+
+{{ navbar | safe }}
+
+<center>
+  <br>
+  <h2>Purchase Confirmed</hr>
+  <br>
+  <br>
+  <table border = '1'><tr>
+    <td>Shares Bought</td>
+      <td>{{data[0]}}</td>
+    </tr>
+    <tr>
+      <td>Stock ID</td>
+      <td>{{data[1]}}</td>
+    </tr>
+    <tr>
+      <td>Stock Name</td>
+      <td>{{data[2]}}</td>
+    </tr>
+    <tr>
+      <td>Total Expenditure</td>
+      <td>{{data[3]}}</td>
+    </tr>
+    <tr>
+      <td>Money Remaining</td>
+      <td>{{data[4]}}</td>
+    </tr>
+  </table>
+
+  <p id="message"></p>
+
+  <script>
+    window.setTimeout(function() {
+      // Set Redirect Message
+      document.getElementById("message").innerHTML = "Redirecting to home page..."
+
+      // Redirect To Homepage
+      window.location.href = "/buy";
+    }, 2500);
+  </script>
+</center>
+</html>
